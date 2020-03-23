@@ -25,7 +25,7 @@ Generally speaking, it's usually best to use an array unless you expect to frequ
 
 #### I've always been able to add as much as I want to an Array and take things out from the beginning, end, or anywhere else.  It's never been a problem before, why are we bothering with all of this?
 We're looking under the hood!  High level languages like Python abstract away most of the inner workings of everything we do.  Most of the time this is a good thing and most of the time it doesn't matter.  However, we're professional engineers and sometimes we need to solve problems where the details can have a major impact on success or failure.  Think about your car.  Do you know exactly how much weight you can put in it?  Probably not, nor do you need to.  But if you find yourself needing to put a load of bags of concrete in the trunk it suddenly becomes very important.  As an engineer, you'll be expected to understand when the details do and do not matter.
-
+//////////////////////////////////////////////////////////////
 #### What are real-world use-cases for a LRU Cache?
 An LRU cache is an efficient type of caching system that keeps recently used items and when the cache becomes full, pushes out the least recently used item in the cache.  It can be used any time a subset of data is used frequently that needs to be pulled from a source with a long lookup time.  For example, cacheing the most frequently accessed items from a database on a remote server.
 
