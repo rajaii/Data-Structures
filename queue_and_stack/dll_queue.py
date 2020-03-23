@@ -1,7 +1,7 @@
 import sys
 sys.path.append('../doubly_linked_list')
 from doubly_linked_list import DoublyLinkedList
-from doubly_linked_list import ListNode
+
 
 
 class Queue:
@@ -29,8 +29,4 @@ class Queue:
         return f'queue of length {self.len()}'
 
 
-q = Queue()
-q.enqueue(5)
-q.enqueue(6)
-print(str(q))
-q.__str__()
+
