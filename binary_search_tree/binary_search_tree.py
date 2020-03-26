@@ -63,8 +63,12 @@ class BinarySearchTree:
         if self.value == None:
             return
         cb(self.value)
-        self.left.for_each(cb)
-        self.right.for_each(cb)
+        print(f'self.left: {self.left}')
+        print(f'self.right: {self.right}')
+        if self.left is not None:
+            self.left.for_each(cb)
+        if self.right is not None:
+            self.right.for_each(cb)
 
 
         # def in_order(node, c):
