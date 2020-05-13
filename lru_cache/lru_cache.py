@@ -1,3 +1,6 @@
+from doubly_linked_list import DoublyLinkedList
+
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -6,8 +9,13 @@ class LRUCache:
     order, as well as a storage dict that provides fast access
     to every node stored in the cache.
     """
+
     def __init__(self, limit=10):
-        pass
+        self.limit = limit
+        self.storage = DoublyLinkedList()
+        #self.current = len(self.storage)
+        self.storage_dict = {}
+        self.size = 0
 
     """
     Retrieves the value associated with the given key. Also
@@ -17,8 +25,20 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        pass
+        if key in self.storage_dict:
+            node = self.storage_dict[key]
+            self.storage.move_to_end(node)
+            print(node)
+            print(node.value)
+            print(node.value[1])
+            print(node.value[0])
+            return node.value[1]
+        else:
+            return None
+        # self.storage.add_to_tail(self.storage_dict[key])
+        # return self.storage_dict[key]
 
+        
     """
     Adds the given key-value pair to the cache. The newly-
     added pair should be considered the most-recently used
@@ -30,4 +50,37 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        pass
+        if key in self.storage_dict:
+            node = self.storage_dict[key]
+            node.value = (key, value)
+            self.storage.move_to_end(node)
+            return
+        if self.size == self.limit:
+            del self.storage_dict[self.storage.head.value[0]]
+            self.storage.remove_from_head()
+            self.size += 1
+
+        self.storage.add_to_tail((key, value))
+        self.storage_dict[key] = self.storage.tail
+        self.size += 1
+
+        # self.storage_dict.update({key, value})
+        # ##not sure if this following will work because self.storage.key is funky linked
+        # if self.current == self.limit:
+        #     self.storage_dict.pop(self.storage.tail.key)
+        #     self.storage.remove_from_tail()
+        # if self.storage.key and self.storage.key is not self.storage.head:
+        #     self.storage.delete(self.storage.key)
+        #     self.storage.add_to_head({key, value})
+        # if self.storage.key == self.storage.head:
+        #     self.storage.key = value
+
+
+
+        
+
+
+        
+
+
+
